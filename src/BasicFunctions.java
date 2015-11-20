@@ -42,22 +42,7 @@ public class BasicFunctions {
 		return fileToReturn;
 
 	}
-	
-	public static int checkNumInitObjects(Student[] S) {
-		int numInitObjects = 0;
-		while(S[numInitObjects] != null)
-			numInitObjects++;
-		return numInitObjects;
-	}//end checkNumInitializedObjects function
-	
-	//overloading ftw
-	public static int checkNumInitObjects(School[] H) {
-		int numInitObjects = 0;
-		while(H[numInitObjects] != null)
-			numInitObjects++;
-		return numInitObjects;
-	}//end checkNumInitializedObjects function
-	
+		
 	public static double getAverageOfArray (double[] D) {
 		double sum = 0;
 		int numElements = D.length;
