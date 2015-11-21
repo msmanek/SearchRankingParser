@@ -5,7 +5,7 @@ public class SearchTarget {
 	private String websiteToFind;
 	
 	//constructors
-	public SearchTarget(String keywords, String website) {
+	public SearchTarget(String website, String keywords) {
 		this.searchKeywords = keywords;
 		this.websiteToFind = website;
 	}
