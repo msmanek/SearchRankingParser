@@ -25,7 +25,8 @@ public class SearchRankingsParser {
 		
 		
 		
-//		Spider spider = new Spider();
+		Spider spider = new Spider(inputtedTargets);
+		spider.searchGoogle();
 //		spider.search("http://arstechnica.com/", "Steve Jobs");
 
 
@@ -75,7 +76,7 @@ public class SearchRankingsParser {
 		
 		System.out.println();
 				
-		//output verifier text
+		//text to verify that things have been loaded correctly
 		System.out.printf("\n\n%d targets loaded out of %d targets in the file.\n",
 				sitesAndKeywords.size(), totalTargetsCounter);
 		

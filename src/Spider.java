@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +8,7 @@ public class Spider {
 	private static final int MAX_PAGES_TO_SEARCH = 10;
 	private Set<String> pagesVisited = new HashSet<String>();
 	private List<String> pagesToVisit = new LinkedList<String>();
+	private ArrayList<SearchTarget> targetsAndKeywords = new ArrayList<SearchTarget>();
 
 	/**
 	 * Our main launching point for the Spider's functionality. Internally it
@@ -18,6 +20,43 @@ public class Spider {
 	 * @param searchWord
 	 *            - The word or string that you are searching for
 	 */
+	
+	public Spider(ArrayList<SearchTarget> sT) {
+		this.targetsAndKeywords = sT;
+	}
+	
+	
+	public void searchGoogle() {
+		String url;
+		StringBuilder urlBuilder;
+		
+		for(int i = 0; i < this.targetsAndKeywords.size(); i++) {
+			url = buildGoogleUrl(this.targetsAndKeywords.get(i).getKeywordArray());			
+		}
+		
+	}
+	
+	/**
+	 * this function will create a google url for the first page of results
+	 * of the keywords
+	 * 
+	 * @param a string array 
+	 * @return a google url that will search for the keywords
+	 */
+	private String buildGoogleUrl(String[] keywords) {
+		
+		StringBuilder googleUrlBuilder = new StringBuilder("google.ca/#q=");
+		
+		
+		for(int i = 0; i < keywords.length; i++) {
+			googleUrlBuilder.append(keywords[i]);
+			if(i + 1 < keywords.length)
+				googleUrlBuilder.append("+");
+		}
+				
+		return googleUrlBuilder.toString();
+	}
+	
 	public void search(String url, String searchWord) {
 
 		while (this.pagesVisited.size() < MAX_PAGES_TO_SEARCH) {
