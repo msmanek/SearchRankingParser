@@ -28,10 +28,14 @@ public class Spider {
 	
 	public void searchGoogle() {
 		String url;
-		StringBuilder urlBuilder;
 		
 		for(int i = 0; i < this.targetsAndKeywords.size(); i++) {
-			url = buildGoogleUrl(this.targetsAndKeywords.get(i).getKeywordArray());			
+			url = buildGoogleUrl(this.targetsAndKeywords.get(i).getKeywordArray());
+			this.search(url, this.targetsAndKeywords.get(i).getWebsiteToFind());
+			
+//			try { Thread.sleep(1000); }
+//			catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+
 		}
 		
 	}
@@ -45,7 +49,7 @@ public class Spider {
 	 */
 	private String buildGoogleUrl(String[] keywords) {
 		
-		StringBuilder googleUrlBuilder = new StringBuilder("google.ca/#q=");
+		StringBuilder googleUrlBuilder = new StringBuilder("http://www.google.ca/#q=");
 		
 		
 		for(int i = 0; i < keywords.length; i++) {
@@ -55,7 +59,7 @@ public class Spider {
 		}
 				
 		return googleUrlBuilder.toString();
-	}
+	}//end buildGoogleUrl method
 	
 	public void search(String url, String searchWord) {
 
@@ -81,6 +85,7 @@ public class Spider {
 				break;
 			}
 
+			//else
 			this.pagesToVisit.addAll(leg.getLinks());
 		}
 		System.out.println("\n**Done** Visited " + this.pagesVisited.size()
